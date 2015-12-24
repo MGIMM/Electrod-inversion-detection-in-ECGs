@@ -9,5 +9,10 @@ The data could be downloaded from the site above, and they are supposed to be pu
 
 ##schedule ：
 
+### 24-12-2015
+* add preliminary analysis
+* add functions packages for data importing and sampling
+
+
 
 
