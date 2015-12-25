@@ -12,12 +12,16 @@ The data could be downloaded from the site above, and they are supposed to be pu
 ### 24-12-2015
 * add preliminary analysis
 * add function package for data importing and sampling
-* add "naive" fft transformation
-* add "naive" wt transformation
+* add "naive" fft transformation(blackbox)
+* add "naive" wt transformation(blackbox)
 * add plot confusion matrix function to function package
 
 ### 25-12-2015
 * change wavelet package, try cwt with "mexican hat"
+* finish violent black box method
+* start trying white box method
+* tried MLP with less features(12 features) and failed(found in whitebox exploration)
+
 
 
 
