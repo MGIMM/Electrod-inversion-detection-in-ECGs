@@ -1,5 +1,7 @@
 import pandas as pd
 from matplotlib import pyplot as plt
+from sklearn.metrics import confusion_matrix
+import numpy as np
 
 
 #function for data importing
@@ -17,12 +19,18 @@ def DataSample(X,ID,index):
     'index = index of channel, from 1 to 12'
     return X.iloc[ID,1+(index-1)*750:1+index*750] 
 
-#function for ploting
-def PlotAllChannels (X,ID):
-    fig, ((ax1, ax2, ax3), (ax4, ax5,ax6),(ax7, ax8, ax9), (ax10, ax11,ax12)) = plt.subplots(4, 3, sharex='col', sharey='row')
-    fig.set_size_inches(15, 15)
-    for (ax,i) in zip((ax1, ax2, ax3, ax4, ax5, ax6, ax7, ax8, ax9, ax10, ax11, ax12),range(1,13,1)):
-        ax.plot(DataSample(X,ID,i))
-        ax.set_title('channel '+str(i))
-    return True    
-    
+#function for ploting Confusion Matrix.
+def PlotCM(lable,pred,title):
+    'Plot confusion matrix for supervised classification'
+    cm = confusion_matrix(lable,pred)
+    cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+    plt.imshow(cm_normalized, interpolation='nearest',cmap = 'OrRd')
+    plt.title('Confusion Matrix for '+ title)
+    plt.colorbar()
+    for y in range(2):
+        for x in range(2):
+            plt.text(x, y , '%.2f' % cm[y,x],
+                     horizontalalignment='center',
+                     verticalalignment='center',
+                     )
+            
