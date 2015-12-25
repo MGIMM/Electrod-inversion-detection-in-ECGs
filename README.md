@@ -16,5 +16,8 @@ The data could be downloaded from the site above, and they are supposed to be pu
 * add "naive" wt transformation
 * add plot confusion matrix function to function package
 
+### 25-12-2015
+* change wavelet package, try cwt with "mexican hat"
+
 
 
