@@ -23,6 +23,9 @@ The data could be downloaded from the site above, and they are supposed to be pu
 * tried MLP with less features(12 features) and failed(found in whitebox exploration)
 
 ### 26-12-2015
-* add sign to the 12 features, failed.
+* add sign to the 12 features, failed
+* add fft transformation after wt transformation in Naive WT, a little bit better performance
+* fix the feature selection over estimate bug
+
 
 
