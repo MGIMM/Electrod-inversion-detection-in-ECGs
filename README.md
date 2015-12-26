@@ -22,6 +22,7 @@ The data could be downloaded from the site above, and they are supposed to be pu
 * start trying white box method
 * tried MLP with less features(12 features) and failed(found in whitebox exploration)
 
-
+### 26-12-2015
+* add sign to the 12 features, failed.
 
 
