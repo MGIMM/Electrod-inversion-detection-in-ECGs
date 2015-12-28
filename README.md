@@ -7,7 +7,7 @@ https://challengedata.ens.fr/en/challenge/11/electrod_inversion_detection_in_ecg
 * ####data :
 The data could be downloaded from the site above, and they are supposed to be put in the folder called "raw data". Attention! input_train and input_test are .zip format files.
 
-##schedule ：
+##Schedule ：
 
 ### 24-12-2015
 * add preliminary analysis
@@ -30,6 +30,19 @@ The data could be downloaded from the site above, and they are supposed to be pu
 ### 28-12-2015
 * finish MLP
 * found out main problem for feature collection !
+
+### Back to the start:
+
+
+During the blackbox exploration, we found some bizzare problems of feature collection :
+
+* A relatively unstable benchmark for feature selection :
+we could not find the stable error rate curve even with a large number of features.
+* "good" performance when number of feature is very small.
+
+It's reasonable, because we didn't use the physic background of the problem : it's a test ! It aims to find out the aberrant electrode(s), which we don't know how to locate. And that is why we've never got a result with a better performance than 83% with cv : we are using wrong features !
+
+So, next step, we are going to work on how to find out the inverted channel(s), with an "unsupervised" method.
 
 
 
