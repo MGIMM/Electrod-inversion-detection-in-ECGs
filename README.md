@@ -27,5 +27,9 @@ The data could be downloaded from the site above, and they are supposed to be pu
 * add fft transformation after wt transformation in Naive WT, a little bit better performance
 * fix the feature selection over estimate bug
 
+### 28-12-2015
+* finish MLP
+* found out main problem for feature collection !
+
 
 
