@@ -44,5 +44,7 @@ It's reasonable, because we didn't use the physic background of the problem : it
 
 So, next step, we are going to work on how to find out the inverted channel(s), with an "unsupervised" method.
 
-
+### 29-12-2015
+* add cut the wave (not finished)
+* Feature analysis(precisely)
 
