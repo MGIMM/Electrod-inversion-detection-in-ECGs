@@ -51,3 +51,5 @@ So, next step, we are going to work on how to find out the inverted channel(s), 
 ### 30-12-2015
 * start working on action potential extraction
 
+### 31-12-2015
+* finish period extractor !!! with violent method(see PeriodSpliter in ECG functions)

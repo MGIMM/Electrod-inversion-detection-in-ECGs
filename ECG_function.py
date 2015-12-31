@@ -34,3 +34,48 @@ def PlotCM(lable,pred,title):
                      verticalalignment='center',
                      )
             
+
+def neighbour(newobj,listindex,threshold = 10):
+    for obj in listindex:
+        if np.abs(newobj-obj)<threshold:
+            return True
+#function for PeriodSplit
+
+def PeriodSplit(wave,threshold =1.0/10):
+    set_peak = [np.argmax(np.abs(wave[:300]))]
+    max_peak = wave[set_peak[0]]
+    for i in range(len(wave)):
+        if np.abs(wave[i]-max_peak) <= 1.0/4*np.abs(max_peak) and neighbour(i,set_peak) != True :
+            set_peak.append(i)
+    num_peak = len(set_peak)     
+    start_interval = range(np.min(set_peak))
+    
+
+    
+    
+    if num_peak == 1 or num_peak == 2 or num_peak>5:
+        
+        num_peak = 3     
+        start_interval = range(50)
+        
+        
+        
+    period_interval = range(750/(num_peak+1),750/(num_peak-1),1)
+    sd = [[[]for period in period_interval] for start in start_interval]
+    for start in start_interval:
+        for period in period_interval:
+            if np.abs(wave[start])<threshold*np.abs(np.max(wave)) and start + period*2<750:
+                sd[start][period-period_interval[0]] = np.std(wave[start:start+period]-wave[start+period:start+period*2])
+            else:
+                sd[start][period-period_interval[0]] = float('inf')
+
+    sdlist = []
+    for start in sd:
+        sdlist += start
+    start,period = np.argmin(sd)/len(period_interval),np.argmin(sd)%len(period_interval)+period_interval[0]
+    
+    print "number of peaks : ",num_peak
+    print "start at :", start
+    print 'period :', period
+    return wave[start :start + period]
+
