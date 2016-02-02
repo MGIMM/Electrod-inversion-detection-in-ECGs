@@ -1,5 +1,6 @@
 import pandas as pd
 from matplotlib import pyplot as plt
+import seaborn as sns
 from sklearn.metrics import confusion_matrix
 import numpy as np
 
@@ -22,10 +23,12 @@ def DataSample(X,ID,index):
 #function for ploting Confusion Matrix.
 def PlotCM(lable,pred,title):
     'Plot confusion matrix for supervised classification'
+    sns.set_style("white")
     cm = confusion_matrix(lable,pred)
     cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-    plt.imshow(cm_normalized, interpolation='nearest',cmap = 'OrRd')
+    plt.imshow(cm_normalized, interpolation='nearest',cmap = 'Blues')
     plt.title('Confusion Matrix for '+ title)
+
     plt.colorbar()
     for y in range(2):
         for x in range(2):
@@ -34,6 +37,24 @@ def PlotCM(lable,pred,title):
                      verticalalignment='center',
                      )
             
+
+def PlotCM_sub(lable,pred,score,title,ax):
+    
+    'Plot confusion matrix for supervised classification'
+    sns.set_style("white")
+    cm = confusion_matrix(lable,pred)
+    cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+    ax.imshow(cm_normalized, interpolation='nearest',cmap = 'Blues')
+    ax.set_title(title + ':'+ str(score))
+    ax.axes.get_xaxis().set_visible(False)
+    ax.axes.get_yaxis().set_visible(False)
+    #ax.colorbar()
+    for y in range(2):
+        for x in range(2):
+            ax.text(x, y , '%.0f' % cm[y,x],
+                     horizontalalignment='center',
+                     verticalalignment='center',
+                     )
 
 def neighbour(newobj,listindex,threshold = 10):
     for obj in listindex:
